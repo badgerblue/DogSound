@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleepy Pup — Noise Watcher</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐶</text></svg>" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <p class="eyebrow">Cozy noise watcher</p>
+        <h1>Sleepy Pup</h1>
+        <p class="lede">
+          A little dog naps on a warm bed. Loud sounds wake them up for a bark —
+          then they drift back to sleep when it is quiet again.
+        </p>
+      </header>
+
+      <main class="card">
+        <section class="scene" id="scene" data-state="sleeping" aria-live="polite">
+          <div class="scene-glow" aria-hidden="true"></div>
+
+          <svg class="dog-svg" viewBox="0 0 420 320" role="img" aria-labelledby="dogTitle dogDesc">
+            <title id="dogTitle">A cartoon dog on a cushion</title>
+            <desc id="dogDesc">The dog sleeps, then wakes and barks when noise is detected.</desc>
+
+            <defs>
+              <linearGradient id="bedGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f4c9a5" />
+                <stop offset="100%" stop-color="#e8a57a" />
+              </linearGradient>
+              <linearGradient id="furGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#e2b07a" />
+                <stop offset="100%" stop-color="#c8884a" />
+              </linearGradient>
+              <linearGradient id="earGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#b56a3c" />
+                <stop offset="100%" stop-color="#8d4a28" />
+              </linearGradient>
+            </defs>
+
+            <g class="stars" aria-hidden="true">
+              <circle cx="48" cy="46" r="3.2" fill="#f7e3b0" />
+              <circle cx="372" cy="58" r="2.4" fill="#f7e3b0" />
+              <circle cx="390" cy="110" r="2" fill="#fbe9c4" />
+            </g>
+
+            <ellipse class="bed-shadow" cx="210" cy="262" rx="148" ry="22" fill="#c9895c" opacity="0.28" />
+            <ellipse class="bed" cx="210" cy="248" rx="150" ry="42" fill="url(#bedGrad)" />
+            <ellipse class="bed-inner" cx="210" cy="244" rx="118" ry="26" fill="#ffe8d0" />
+            <ellipse class="bed-rim" cx="210" cy="236" rx="132" ry="34" fill="none" stroke="#d9895c" stroke-width="10" />
+
+            <g class="dog" id="dog">
+              <g class="tail">
+                <path d="M118 214 C86 200 78 168 102 156" fill="none" stroke="#c8884a" stroke-width="16" stroke-linecap="round" />
+              </g>
+
+              <g class="body-group">
+                <ellipse class="body" cx="196" cy="214" rx="78" ry="42" fill="url(#furGrad)" />
+                <ellipse class="belly" cx="208" cy="226" rx="42" ry="22" fill="#f3d7b4" />
+                <ellipse class="hind-paw" cx="148" cy="244" rx="18" ry="12" fill="#d9a066" />
+                <ellipse class="front-paw" cx="236" cy="246" rx="16" ry="11" fill="#d9a066" />
+                <ellipse class="spot" cx="168" cy="200" rx="14" ry="10" fill="#b56a3c" opacity="0.45" />
+              </g>
+
+              <g class="head-group">
+                <g class="ear ear-left">
+                  <ellipse cx="232" cy="132" rx="18" ry="32" fill="url(#earGrad)" transform="rotate(-18 232 132)" />
+                  <ellipse cx="234" cy="136" rx="9" ry="18" fill="#f0c2a0" transform="rotate(-18 234 136)" />
+                </g>
+                <g class="ear ear-right">
+                  <ellipse cx="308" cy="136" rx="18" ry="32" fill="url(#earGrad)" transform="rotate(22 308 136)" />
+                  <ellipse cx="306" cy="140" rx="9" ry="18" fill="#f0c2a0" transform="rotate(22 306 140)" />
+                </g>
+
+                <ellipse class="head" cx="270" cy="168" rx="54" ry="48" fill="url(#furGrad)" />
+                <ellipse class="snout" cx="292" cy="186" rx="28" ry="20" fill="#f6d7b8" />
+                <ellipse class="nose" cx="312" cy="180" rx="9" ry="7" fill="#5b3a2e" />
+                <circle class="nose-shine" cx="309" cy="177" r="2.2" fill="#f4e4d6" />
+
+                <g class="eyes-sleep">
+                  <path d="M246 162 Q254 168 262 162" fill="none" stroke="#5b3a2e" stroke-width="3.4" stroke-linecap="round" />
+                  <path d="M278 160 Q286 166 294 160" fill="none" stroke="#5b3a2e" stroke-width="3.4" stroke-linecap="round" />
+                </g>
+                <g class="eyes-awake">
+                  <ellipse cx="254" cy="162" rx="7.5" ry="9" fill="#5b3a2e" />
+                  <ellipse cx="286" cy="160" rx="7.5" ry="9" fill="#5b3a2e" />
+                  <circle cx="256" cy="159" r="2.4" fill="#fff8ee" />
+                  <circle cx="288" cy="157" r="2.4" fill="#fff8ee" />
+                </g>
+
+                <g class="mouth-sleep">
+                  <path d="M300 196 Q308 202 316 196" fill="none" stroke="#b57a5a" stroke-width="2.6" stroke-linecap="round" />
+                </g>
+                <g class="mouth-bark">
+                  <ellipse cx="308" cy="202" rx="12" ry="10" fill="#5b3a2e" />
+                  <ellipse cx="308" cy="206" rx="7" ry="5" fill="#d97a7a" />
+                </g>
+              </g>
+            </g>
+
+            <g class="zzz" aria-hidden="true">
+              <text class="z z1" x="318" y="118">z</text>
+              <text class="z z2" x="338" y="96">z</text>
+              <text class="z z3" x="360" y="78">Z</text>
+            </g>
+
+            <g class="woof-bubble" aria-hidden="true">
+              <ellipse cx="78" cy="92" rx="54" ry="32" fill="#fff8ee" stroke="#d9895c" stroke-width="3" />
+              <path d="M92 120 L108 138 L116 116" fill="#fff8ee" stroke="#d9895c" stroke-width="3" stroke-linejoin="round" />
+              <text x="78" y="100" text-anchor="middle" class="woof-text">WOOF</text>
+            </g>
+          </svg>
+
+          <p class="status" id="statusText">Dreaming on a cozy bed. Tap Enable Microphone to start listening.</p>
+        </section>
+
+        <section class="meter-panel" aria-label="Audio level">
+          <div class="meter-labels">
+            <span>Audio level</span>
+            <span id="levelReadout">0%</span>
+          </div>
+          <div class="meter" id="meter" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="meter-fill" id="meterFill"></div>
+            <div class="meter-threshold" id="meterThreshold" title="Wake threshold"></div>
+          </div>
+          <p class="meter-note">
+            Threshold: <strong id="thresholdReadout">—</strong>
+            <span class="hint">Relative amplitude, not calibrated decibels.</span>
+          </p>
+        </section>
+
+        <section class="controls">
+          <div class="control-row">
+            <button type="button" class="btn primary" id="micBtn">Enable Microphone</button>
+            <button type="button" class="btn" id="muteBtn" aria-pressed="false">Mute Bark</button>
+            <button type="button" class="btn" id="testBtn">Test Bark</button>
+          </div>
+
+          <label class="slider-wrap" for="sensitivity">
+            <span class="slider-label">
+              Sensitivity
+              <span id="sensitivityValue">60</span>
+            </span>
+            <input id="sensitivity" type="range" min="0" max="100" value="60" />
+            <span class="slider-hint">Lower values wake the pup more easily. Higher values ignore quieter sounds.</span>
+          </label>
+
+          <p class="error" id="errorText" hidden></p>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

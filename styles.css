@@ -1,0 +1,433 @@
+:root {
+  --bg-top: #f6d7b8;
+  --bg-bottom: #e8b892;
+  --card: #fff6ec;
+  --ink: #4a2f24;
+  --muted: #7a5344;
+  --accent: #d06b4a;
+  --accent-dark: #b35236;
+  --good: #3f8f6b;
+  --shadow: 0 18px 40px rgba(110, 62, 32, 0.18);
+  --radius: 28px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 248, 230, 0.7), transparent 32%),
+    radial-gradient(circle at 88% 8%, rgba(255, 214, 170, 0.55), transparent 28%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+  line-height: 1.45;
+}
+
+.page {
+  width: min(760px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+h1 {
+  margin: 6px 0 8px;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+}
+
+.lede {
+  margin: 0 auto;
+  max-width: 42ch;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.scene {
+  position: relative;
+  padding: 12px 16px 8px;
+  background: linear-gradient(180deg, #fbe7cc 0%, #f3c9a4 100%);
+}
+
+.scene-glow {
+  position: absolute;
+  inset: auto 18% 18% 18%;
+  height: 70px;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.45), transparent 70%);
+  pointer-events: none;
+}
+
+.dog-svg {
+  display: block;
+  width: min(100%, 520px);
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.dog-svg .body-group,
+.dog-svg .head-group,
+.dog-svg .tail,
+.dog-svg .ear,
+.dog-svg .dog {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.status {
+  margin: 0 8px 12px;
+  text-align: center;
+  font-weight: 700;
+  color: #6b4434;
+}
+
+.meter-panel,
+.controls {
+  padding: 18px 22px 8px;
+}
+
+.controls {
+  padding-bottom: 24px;
+}
+
+.meter-labels,
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.meter {
+  position: relative;
+  height: 18px;
+  border-radius: 999px;
+  background: #f0d7c2;
+  overflow: hidden;
+  box-shadow: inset 0 1px 4px rgba(90, 40, 20, 0.12);
+}
+
+.meter-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #7bc47f, #e0c15a 55%, #d06b4a);
+  transition: width 80ms linear;
+}
+
+.meter-threshold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  margin-left: -2px;
+  background: #4a2f24;
+  border-radius: 2px;
+}
+
+.meter-note {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: baseline;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.hint {
+  font-size: 0.82rem;
+}
+
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.btn {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font: inherit;
+  font-weight: 700;
+  color: var(--ink);
+  background: #f3dcc8;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: #fff8f2;
+}
+
+.btn.primary:hover {
+  background: var(--accent-dark);
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+
+.btn[aria-pressed="true"] {
+  background: #c9846a;
+  color: #fff8f2;
+}
+
+.slider-wrap {
+  display: block;
+}
+
+.slider-hint,
+.error {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.error {
+  color: #b13a3a;
+  font-weight: 700;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.z {
+  fill: #8b5a3c;
+  font-size: 22px;
+  font-weight: 800;
+  font-family: Georgia, serif;
+}
+
+.woof-text {
+  fill: var(--accent);
+  font-size: 18px;
+  font-weight: 800;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+.eyes-awake,
+.mouth-bark,
+.woof-bubble {
+  opacity: 0;
+}
+
+.scene[data-state="sleeping"] .body-group {
+  transform-origin: 196px 230px;
+  animation: breathe 2.6s ease-in-out infinite;
+}
+
+.scene[data-state="sleeping"] .zzz .z {
+  animation: floatZ 2.8s ease-in-out infinite;
+}
+
+.scene[data-state="sleeping"] .z2 {
+  animation-delay: 0.4s;
+}
+
+.scene[data-state="sleeping"] .z3 {
+  animation-delay: 0.8s;
+}
+
+.scene[data-state="sleeping"] .tail {
+  transform-origin: 118px 214px;
+  animation: sleepyTail 3.2s ease-in-out infinite;
+}
+
+.scene[data-state="waking"] .eyes-sleep,
+.scene[data-state="barking"] .eyes-sleep,
+.scene[data-state="waking"] .mouth-sleep,
+.scene[data-state="barking"] .mouth-sleep,
+.scene[data-state="waking"] .zzz,
+.scene[data-state="barking"] .zzz {
+  opacity: 0;
+}
+
+.scene[data-state="waking"] .eyes-awake,
+.scene[data-state="barking"] .eyes-awake {
+  opacity: 1;
+}
+
+.scene[data-state="waking"] .ear-left,
+.scene[data-state="barking"] .ear-left {
+  transform-origin: 232px 150px;
+  animation: perkLeft 0.35s ease-out forwards;
+}
+
+.scene[data-state="waking"] .ear-right,
+.scene[data-state="barking"] .ear-right {
+  transform-origin: 308px 150px;
+  animation: perkRight 0.35s ease-out forwards;
+}
+
+.scene[data-state="barking"] .mouth-bark,
+.scene[data-state="barking"] .woof-bubble {
+  opacity: 1;
+}
+
+.scene[data-state="barking"] .head-group {
+  transform-origin: 270px 180px;
+  animation: barkHead 0.28s ease-in-out 2;
+}
+
+.scene[data-state="barking"] .tail {
+  transform-origin: 118px 214px;
+  animation: wag 0.18s ease-in-out infinite;
+}
+
+.scene[data-state="waking"] .dog,
+.scene[data-state="barking"] .dog {
+  animation: hop 0.45s ease-out;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.03, 0.96);
+  }
+}
+
+@keyframes floatZ {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: translateY(6px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes sleepyTail {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes perkLeft {
+  to {
+    transform: rotate(-12deg) translateY(-6px);
+  }
+}
+
+@keyframes perkRight {
+  to {
+    transform: rotate(12deg) translateY(-6px);
+  }
+}
+
+@keyframes barkHead {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-8deg) translateY(-6px);
+  }
+}
+
+@keyframes wag {
+  from {
+    transform: rotate(-18deg);
+  }
+  to {
+    transform: rotate(16deg);
+  }
+}
+
+@keyframes hop {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    width: min(100% - 16px, 760px);
+    padding-top: 18px;
+  }
+
+  .control-row {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .meter-panel,
+  .controls {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene[data-state="sleeping"] .body-group,
+  .scene[data-state="sleeping"] .zzz .z,
+  .scene[data-state="sleeping"] .tail,
+  .scene[data-state="barking"] .head-group,
+  .scene[data-state="barking"] .tail,
+  .scene[data-state="waking"] .dog,
+  .scene[data-state="barking"] .dog,
+  .btn {
+    animation: none;
+    transition: none;
+  }
+}
